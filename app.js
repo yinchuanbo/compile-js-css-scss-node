@@ -89,9 +89,7 @@ const compressJS = async (filePath, jsOutputDir, isCheck = false) => {
   try {
     const fileContent = await fs.readFile(filePath, "utf-8");
     const minified = await minify(fileContent);
-
     let originalFileName = null;
-
     if (!isCheck) {
       originalFileName = path.basename(filePath);
     } else {
@@ -145,6 +143,6 @@ const compileSCSS = (filePath, cssOutputDir, isCheck = false) => {
 const port = 5110;
 
 // 监听指定的端口
-server.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
+server.listen(port, '0.0.0.0', () => {
+  console.log(`Server running at http://'0.0.0.0':${port}/`);
 });
